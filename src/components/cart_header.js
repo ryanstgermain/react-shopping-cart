@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './style/index.css';
 
-
-const Greeting = () => {
-  render(){
-  
+const CartHeader = () => {
+  render() {
+    return (
+      //<nav className="navbar navbar-dark bg-primary">
+        //<a className="navbar-brand" href="#">Shopping Cart</a>
+      //</nav>
+    );
   }
-  return (
-    <h1>Hello!</h1>
-  )
 }
 
-export default Greeting
+export default CartHeader;
