@@ -9,6 +9,7 @@ const AddCartItem = (props) => {
     })
     return (
             <div className="form-group selectList">
+                <h4>Total: {"$" + props.total}</h4>
                 <label id="sel1">Select list:</label>
                 <select onChange={props.onChangeValue} className="form-control" id="sel1">
                     {AddedItem}

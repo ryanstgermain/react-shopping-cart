@@ -27,20 +27,22 @@ class App extends Component {
                 ],
                 value: "",
                 quantity: 0,
+                total: 33.96,
     }
 }
             onChangeValue = (event) => {
                 this.setState({value: event.target.value})
              }
 
-             onChangeQuantity = (event) =>{
+             onChangeQuantity = (event) => {
                 this.setState({quantity: event.target.value})
              }
-             onSubmitAdd = (event) =>{
+             onSubmitAdd = (event) => {
                 event.preventDefault()
 
                 const price = this.state.products.filter( product => {
                     if (this.state.value === product.name){
+                        this.state.total += product.priceInCents * this.state.quantity
                         return product.priceInCents
                     }
                 })
@@ -66,7 +68,7 @@ class App extends Component {
                     <a className="navbar-brand" href="#">Shopping Cart</a>
                 </nav>
                 <CartItems cartItemList = {this.state.cartItemList} />
-                <AddItem onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
+                <AddItem total={this.state.total} onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
                 <CartFooter copyright="&copy; 2018" /> 
             </div>
         );
