@@ -4,16 +4,17 @@ import '../style/index.css';
 const AddCartItem = (props) => {
     const AddedItem = props.products.map(product => {
         return (
-            <option>{product.name} - {product.priceInCents}</option>
+            <option>{product.name}</option>
         )
     })
     return (
-            <div className="form-group">
-                <label for="sel1">Select list:</label>
-                <select className="form-control" id="sel1">
+            <div className="form-group selectList">
+                <label id="sel1">Select list:</label>
+                <select onChange={props.onChangeValue} className="form-control" id="sel1">
                     {AddedItem}
                 </select>
-                <input className="quantityBox" type="number" placeholder="Quantity"/>
+                <input onChange={props.onChangeQuantity} className="quantityBox" type="number" placeholder="Quantity"/>
+                <button onClick={props.onSubmitAdd} className="submitButton">Submit</button>
             </div>
     )
 }

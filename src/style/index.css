@@ -1,3 +1,11 @@
+.selectList {
+    padding: 10px;
+}
+
 .quantityBox {
+    width: 100%;
+}
+
+.submitButton {
     width: 100%;
 }

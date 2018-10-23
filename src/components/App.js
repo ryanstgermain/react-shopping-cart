@@ -24,10 +24,41 @@ class App extends Component {
                   { id: 46, name: 'Intelligent Leather Clock', priceInCents: 2999 },
                   { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
                   { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
-                ]
+                ],
+                value: "",
+                quantity: 0,
     }
 }
-    
+            onChangeValue = (event) => {
+                this.setState({value: event.target.value})
+             }
+
+             onChangeQuantity = (event) =>{
+                this.setState({quantity: event.target.value})
+             }
+             onSubmitAdd = (event) =>{
+                event.preventDefault()
+
+                const price = this.state.products.filter( product => {
+                    if (this.state.value === product.name){
+                        return product.priceInCents
+                    }
+                })
+
+             var newItem = {
+                id: this.state.cartItemList.length +1,
+                    product: {
+                    id: 40,
+                    name: this.state.value,
+                    priceInCents: price[0].priceInCents
+                },
+                quantity: this.state.quantity
+             }
+                this.setState({
+                    cartItemList: [...this.state.cartItemList, newItem]
+                })
+             }
+
     render() {
         return (
             <div>
@@ -35,7 +66,7 @@ class App extends Component {
                     <a className="navbar-brand" href="#">Shopping Cart</a>
                 </nav>
                 <CartItems cartItemList = {this.state.cartItemList} />
-                <AddItem products = {this.state.products} />
+                <AddItem onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
                 <CartFooter copyright="&copy; 2018" /> 
             </div>
         );
