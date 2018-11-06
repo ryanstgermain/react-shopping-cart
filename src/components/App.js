@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CartHeader from './CartHeader';
 import CartFooter from './CartFooter';
 import CartItems from './CartItems';
 import CartItem from './CartItem';
@@ -49,7 +50,7 @@ class App extends Component {
 
              var newItem = {
                 id: this.state.cartItemList.length +1,
-                    product: {
+                product: {
                     id: 40,
                     name: this.state.value,
                     priceInCents: price[0].priceInCents
@@ -64,9 +65,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-dark bg-primary">
-                    <a className="navbar-brand" href="#">Shopping Cart</a>
-                </nav>
+                <CartHeader />
                 <CartItems cartItemList = {this.state.cartItemList} />
                 <AddItem total={this.state.total} onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
                 <CartFooter copyright="&copy; 2018" /> 
