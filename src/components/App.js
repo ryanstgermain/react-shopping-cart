@@ -3,6 +3,7 @@ import CartHeader from './CartHeader';
 import CartFooter from './CartFooter';
 import CartItems from './CartItems';
 import CartItem from './CartItem';
+import Total from './Total';
 import AddItem from './AddItem';
 import '../style/App.css';
 
@@ -67,7 +68,8 @@ class App extends Component {
             <div>
                 <CartHeader />
                 <CartItems cartItemList = {this.state.cartItemList} />
-                <AddItem total={this.state.total} onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
+                <AddItem onSubmitAdd={this.onSubmitAdd} onChangeQuantity={this.onChangeQuantity} onChangeValue={this.onChangeValue} products={this.state.products} />
+                <Total cartItemList = {this.state.cartItemList}/>
                 <CartFooter copyright="&copy; 2018" /> 
             </div>
         );
